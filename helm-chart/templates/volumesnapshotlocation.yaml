@@ -5,4 +5,4 @@ metadata:
 spec:
   provider: aws
   config:
-    region: {{ .Values.configuration.volumeSnapshotLocation.config.region }}
+    region: {{ index .Values.configuration.volumeSnapshotLocation 0 "config" "region" }}
