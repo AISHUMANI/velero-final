@@ -1,0 +1,10 @@
+apiVersion: velero.io/v1
+kind: BackupStorageLocation
+metadata:
+  name: default
+spec:
+  provider: aws
+  objectStorage:
+    bucket: {{ .Values.configuration.backupStorageLocation.bucket }}
+  config:
+    region: {{ .Values.configuration.backupStorageLocation.config.region }}

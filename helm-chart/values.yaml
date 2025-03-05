@@ -1,0 +1,24 @@
+configuration:
+  provider: aws
+  backupStorageLocation:
+    - name: default
+      provider: aws
+      bucket: my-k8s-velerobackup
+      config:
+        region: us-east-1
+  volumeSnapshotLocation:
+    - name: default
+      provider: aws
+      config:
+        region: us-east-1
+
+serviceAccount:
+  create: true
+  name: velero
+
+ingress:
+  enabled: true
+  annotations: {}
+  hosts:
+    - velero.cloudmasa.com
+  tls: []

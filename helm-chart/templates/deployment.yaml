@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: velero
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: velero
+  template:
+    metadata:
+      labels:
+        app: velero
+    spec:
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      containers:
+        - name: velero
+          image: velero/velero:v1.12.0
+          args:
+            - server
+          env:
+            - name: AWS_REGION
+              value: {{ .Values.configuration.backupStorageLocation.config.region }}
