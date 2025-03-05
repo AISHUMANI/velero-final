@@ -5,6 +5,6 @@ metadata:
 spec:
   provider: aws
   objectStorage:
-    bucket: {{ .Values.configuration.backupStorageLocation.bucket }}
+    bucket: {{ index .Values.configuration.backupStorageLocation 0 "bucket" }}
   config:
-    region: {{ .Values.configuration.backupStorageLocation.config.region }}
+    region: {{ index .Values.configuration.backupStorageLocation 0 "config" "region" }}
